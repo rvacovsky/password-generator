@@ -23,6 +23,6 @@ I used declarations so that when a particular character type was confirmed it wo
 
 Finally, using an empty array I combined and concatenated the confirmed declarations (using 'if' statements to then enable the character type) which formed the information within the password.
 
-A for loop was used to bring that information into a randomizer with the restraint of the previoulsy identified password length to ultimatley generate the requested password.
+A for loop was used to bring that information into a randomizer with the restraint of the previously identified password length to ultimatley generate the requested password.
 
 
