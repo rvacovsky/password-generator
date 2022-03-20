@@ -11,32 +11,18 @@ SO THAT I can create a strong password that provides greater security
   
 <h2>Acceptance Criteria<h2>
     
-GIVEN I need a new, secure password
+* password will be generated using window prompts
+* password must be between 8 and 128 characters in length
+* user will choose between the inclusion of uppercase or lowercase letters, numbers, and special characters (or any combination thereof)
+* user must choose at least one character type in order for password to generate
+* password will be generate to page for user to copy
 
-WHEN I click the button to generate a password
+For this assignment I made use of the while loop in two areas; one, to make the user select a number in an appropriate range, and two, to make the user choose at least one character type. As long as either condition were met, the user could keep selecting criteria to build their password
 
-THEN I am presented with a series of prompts for password criteria
+I used declarations so that when a particular character type was confirmed it would enable the declaration. Choosing 'Cancel' would keep the declaration from being included in the password.
 
-WHEN prompted for password criteria
+Finally, using an empty array I combined and concatenated the confirmed declarations (using 'if' statements to then enable the character type) which formed the information within the password.
 
-THEN I select which criteria to include in the password
+A for loop was used to bring that information into a randomizer with the restraint of the previoulsy identified password length to ultimatley generate the requested password.
 
-WHEN prompted for the length of the password
 
-THEN I choose a length of at least 8 characters and no more than 128 characters
-
-WHEN asked for character types to include in the password
-
-THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-
-WHEN I answer each prompt
-
-THEN my input should be validated and at least one character type should be selected
-
-WHEN all prompts are answered
-
-THEN a password is generated that matches the selected criteria
-
-WHEN the password is generated
-
-THEN the password is either displayed in an alert or written to the page
