@@ -5,49 +5,61 @@ const alpha = "abcdefghijklmnopqrstuvwxyz".split("");
 const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const number = "1234567890".split("");
 const symbol = "!@#^&*()?".split("");
-const arr = [...number, ...upper, ...alpha, ...symbol];
+
+//declarations
+var passwordLength = "";
+var confirmAlpha;
+var confirmUpper;
+var confirmNumber;
+var confirmSymbol;
 
 function generatePassword() {
-  let password = ""
-  let passwordCharacter = "";
-  //beginning of series of prompts
-  var passwordLength = window.prompt ("What's the length of your password? Pick a number between 8 and 128.")
-  if (passwordLength >= 8 && passwordLength <=128) {
-    console.log(passwordLength)
-    if (window.confirm ("Would you like to use uppercase letters?") == true) {
-      passwordCharacter = upper
-      console.log(upper);
-      } else {
-        passwordCharacter != upper
-    }
-    if (window.confirm ("Would you like to use lowercase letters?") == true) {
-      passwordCharacter = alpha
-      console.log(alpha);
-      } else {
-        passwordCharacter != alpha
-    }
-    if (window.confirm ("Would you like to use numbers?") == true) {
-      passwordCharacter = number
-      console.log(number);  
-      } else {
-        passwordCharacter != number
-    }
-    if (window.confirm ("Would you like to use special characters?") == true) {
-      passwordCharacter = symbol
-      console.log(symbol);
-      } else {
-        passwordCharacter != symbol
-    };
-  } else {
+  //determines password length
+  var passwordLength = (window.prompt("What's the length of your password? Pick a number between 8 and 128."));
+  while(passwordLength <= 7 || passwordLength >= 129) {
     window.alert ("Try again! The number needs to be between 8 and 128.")
-    generatePassword();
-  }
+    var passwordLength = (window.prompt("What's the length of your password? Pick a number between 8 and 128."));
+    console.log(passwordLength);
+    }
+  //starts prompts for each character type
+    var confirmAlpha = window.confirm("Would you like to use lowercase letters?");
+    var confirmUpper = window.confirm("Would you like to use uppercase letters?");
+    var confirmNumber = window.confirm("Would you like to use numbers?");
+    var confirmSymbol = window.confirm("Would you like to use special characters?");
+ 
+    //determines whether at least one character type was used  
+      while(confirmAlpha !== true && confirmUpper !== true && confirmNumber !== true && confirmSymbol !== true) {
+        window.alert("You must use at least one character type. Try again.");
+        var confirmAlpha = window.confirm("Would you like to use lowercase letters?");
+        var confirmUpper = window.confirm("Would you like to use uppercase letters?");
+        var confirmNumber = window.confirm("Would you like to use numbers?");
+        var confirmSymbol = window.confirm("Would you like to use special characters?");
+      }
+    //array to bring all confirmed characters into password
+      var passwordCharacter = []
+
+    if (confirmAlpha) {
+      passwordCharacter = passwordCharacter.concat(alpha)
+    } 
+    if (confirmUpper) {
+      passwordCharacter = passwordCharacter.concat(upper)
+    }
+    if (confirmNumber) {
+      passwordCharacter = passwordCharacter.concat(number)
+    }
+    if (confirmSymbol) {
+      passwordCharacter = passwordCharacter.concat(symbol)
+    }
+
+      var password = ""
+
   //for loop to incorporate password length
   for (var i = 0; i < passwordLength; i++) {
-    password += arr[Math.floor(Math.random() * passwordCharacter.length)] 
+    password += passwordCharacter[Math.floor(Math.random() * passwordCharacter.length)] 
   }
-
+  
   return password;
+  
 }
 
 
